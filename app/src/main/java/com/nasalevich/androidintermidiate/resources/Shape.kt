@@ -1,4 +1,4 @@
-package com.nasalevich.androidintermidiate.ui
+package com.nasalevich.androidintermidiate.resources
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
