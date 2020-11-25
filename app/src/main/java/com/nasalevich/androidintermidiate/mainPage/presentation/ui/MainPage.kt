@@ -41,24 +41,4 @@ fun MainPage(
             )
         }
     }
-
-//    Crossfade(current = state.value) {
-//        if (it is MainState.CatSelected) {
-//            BackPressedHandler(onBackPressedDispatcher) {
-//                coroutineScope.launch { viewModel.userIntent.send(MainIntent.PressBack) }
-//            }
-//            EditComponent(
-//                viewModel = viewModel,
-//                onBackPressedDispatcher = onBackPressedDispatcher,
-//                coroutineScope = coroutineScope,
-//                catModel = it.cat
-//            )
-//        } else {
-//            ListComponent(
-//                viewModel = viewModel,
-//                coroutineScope = coroutineScope,
-//                state = it
-//            )
-//        }
-//    }
 }
