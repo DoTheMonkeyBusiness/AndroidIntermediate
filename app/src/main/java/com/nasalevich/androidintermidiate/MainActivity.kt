@@ -1,38 +1,29 @@
 package com.nasalevich.androidintermidiate
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.activity.ComponentActivity
 import androidx.compose.ui.platform.setContent
-import androidx.ui.tooling.preview.Preview
-import com.nasalevich.androidintermidiate.ui.AndroidIntermidiateTheme
+import com.nasalevich.androidintermidiate.mainPage.presentation.MainViewModel
+import com.nasalevich.androidintermidiate.mainPage.presentation.ui.MainPage
+import com.nasalevich.androidintermidiate.resources.AndroidIntermidiateTheme
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+@ExperimentalCoroutinesApi
+class MainActivity : ComponentActivity() {
+
+    private val viewModel: MainViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             AndroidIntermidiateTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
+                MainPage(
+                    onBackPressedDispatcher = onBackPressedDispatcher,
+                    viewModel = viewModel
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AndroidIntermidiateTheme {
-        Greeting("Android")
     }
 }

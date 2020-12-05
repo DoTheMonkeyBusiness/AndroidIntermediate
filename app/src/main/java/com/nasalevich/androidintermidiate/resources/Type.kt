@@ -1,4 +1,4 @@
-package com.nasalevich.androidintermidiate.ui
+package com.nasalevich.androidintermidiate.resources
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
