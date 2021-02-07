@@ -1,6 +1,5 @@
 package com.nasalevich.androidintermidiate.mainPage.presentation
 
-import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nasalevich.androidintermidiate.mainPage.domain.model.CatModel
@@ -71,9 +70,5 @@ class MainViewModel(
         catList.addAll(getCatsUseCase.invoke())
 
         _state.value = MainState.Success(catList)
-    }
-
-    public override fun onCleared() {
-        super.onCleared()
     }
 }
