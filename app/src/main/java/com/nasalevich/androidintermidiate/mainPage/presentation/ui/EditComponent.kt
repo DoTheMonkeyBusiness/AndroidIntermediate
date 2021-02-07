@@ -37,7 +37,7 @@ fun EditComponent(
                     IconButton(onClick = {
                         onBackPressedDispatcher.onBackPressed()
                     }) {
-                        Icon(Icons.Filled.ArrowBack)
+                        Icon(imageVector = Icons.Filled.ArrowBack, contentDescription="")
                     }
                 },
                 title = {

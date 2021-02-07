@@ -2,7 +2,9 @@ package com.nasalevich.androidintermidiate.mainPage.presentation.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Providers
@@ -90,13 +92,15 @@ private fun ItemsList(
     viewModel: MainViewModel,
     coroutineScope: CoroutineScope
 ) {
-    LazyColumnFor(items = items) {
-        ListItem(
-            catModel = it,
-            viewModel = viewModel,
-            coroutineScope = coroutineScope,
-        )
-        Divider()
+    LazyColumn {
+        items(items = items, itemContent = { it: CatModel ->
+            ListItem(
+                catModel = it,
+                viewModel = viewModel,
+                coroutineScope = coroutineScope,
+            )
+            Divider()
+        })
     }
 }
 
