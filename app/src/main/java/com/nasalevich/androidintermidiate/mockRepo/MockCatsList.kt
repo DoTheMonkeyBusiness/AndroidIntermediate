@@ -1,6 +1,6 @@
 package com.nasalevich.androidintermidiate.mockRepo
 
-import com.nasalevich.androidintermidiate.mainPage.data.entity.CatEntity
+import com.nasalevich.androidintermidiate.pages.mainPage.data.entity.CatEntity
 
 object MockCatsList {
     val list = listOf(

@@ -2,7 +2,8 @@
 buildscript {
     ext {
         compose_version = '1.0.0-alpha11'
-        koin_version = '2.2.1'
+        compose_navigation_version = '1.0.0-alpha06'
+        koin_version = '2.2.2'
         kotlin_version = '1.4.21-2'
     }
     repositories {
