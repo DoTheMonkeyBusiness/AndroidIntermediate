@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.nasalevich.androidintermidiate.base.ui.Progress
 import com.nasalevich.androidintermidiate.pages.mainPage.domain.model.CatModel
 import com.nasalevich.androidintermidiate.pages.mainPage.presentation.MainIntent
 import com.nasalevich.androidintermidiate.pages.mainPage.presentation.MainState
@@ -70,17 +71,6 @@ private fun BodyContent(
             }
             else -> Progress(modifier = Modifier.fillMaxSize())
         }
-    }
-}
-
-@Composable
-private fun Progress(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        CircularProgressIndicator(modifier = Modifier.size(64.dp))
     }
 }
 

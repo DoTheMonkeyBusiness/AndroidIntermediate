@@ -2,6 +2,7 @@ package com.nasalevich.androidintermidiate
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.setContent
 import androidx.navigation.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -13,6 +14,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class MainActivity : ComponentActivity() {
 
+    @ExperimentalComposeUiApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

@@ -3,6 +3,7 @@ package com.nasalevich.androidintermidiate.navigation
 import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -11,6 +12,7 @@ import com.nasalevich.androidintermidiate.pages.mainPage.presentation.ui.MainPag
 import com.nasalevich.androidintermidiate.pages.tinderPage.presentation.ui.TinderPage
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalComposeUiApi
 @ExperimentalCoroutinesApi
 @Composable
 fun NavGraph(

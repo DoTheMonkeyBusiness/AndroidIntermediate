@@ -4,7 +4,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.onActive
 
 @Composable
 fun BackPressedHandler(dispatcher: OnBackPressedDispatcher, callback: () -> Unit) {
