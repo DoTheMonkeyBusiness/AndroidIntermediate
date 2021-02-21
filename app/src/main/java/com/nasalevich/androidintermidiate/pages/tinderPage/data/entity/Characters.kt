@@ -5,20 +5,20 @@ import com.google.gson.annotations.SerializedName
 class CharacterResultsEntity(
 
     @SerializedName("results")
-    val results: List<CharacterEntity>
+    val results: List<CharacterEntity>?
 )
 
 class CharacterEntity(
 
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
 
     @SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @SerializedName("species")
-    val species: String,
+    val species: String?,
 
     @SerializedName("image")
-    val image: String,
+    val image: String?,
 )

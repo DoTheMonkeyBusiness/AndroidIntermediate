@@ -3,6 +3,7 @@ package com.nasalevich.androidintermidiate.pages.tinderPage.presentation.ui
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -18,7 +19,7 @@ import org.koin.androidx.compose.getViewModel
 @ExperimentalComposeUiApi
 @Composable
 fun TinderPage(viewModel: TinderViewModel = getViewModel()) {
-    val state = viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
     val coroutineScope = rememberCoroutineScope()
 
     val onSwipeLeft: () -> Unit = {
@@ -32,7 +33,7 @@ fun TinderPage(viewModel: TinderViewModel = getViewModel()) {
         }
     }
 
-    when (val value = state.value) {
+    when (val value = state) {
         is TinderState.Idle -> coroutineScope.launch {
             viewModel.userIntent.send(TinderIntent.FetchData)
         }

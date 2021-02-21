@@ -1,18 +1,18 @@
 package com.nasalevich.androidintermidiate.pages.tinderPage.data.mapper
 
-import com.nasalevich.androidintermidiate.pages.tinderPage.data.entity.CharacterResultsEntity
+import com.nasalevich.androidintermidiate.pages.tinderPage.data.entity.CharacterEntity
 import com.nasalevich.androidintermidiate.pages.tinderPage.domain.model.CharacterModel
 import com.nasalevich.androidintermidiate.utils.Mapper
 
-class CharactersMapper : Mapper<CharacterResultsEntity, List<CharacterModel>> {
+class CharactersMapper : Mapper<List<CharacterEntity>, List<CharacterModel>> {
 
-    override fun map(input: CharacterResultsEntity): List<CharacterModel> {
-        return input.results.map {
+    override fun map(input: List<CharacterEntity>): List<CharacterModel> {
+        return input.filter { it.id != null }.map {
             CharacterModel(
-                id = it.id,
-                name = it.name,
-                description = it.species,
-                image = it.image
+                id = it.id!!,
+                name = it.name ?: "",
+                description = it.species ?: "",
+                image = it.image ?: ""
             )
         }
     }

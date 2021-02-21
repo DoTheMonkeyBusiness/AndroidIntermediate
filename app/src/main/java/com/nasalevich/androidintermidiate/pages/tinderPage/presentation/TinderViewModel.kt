@@ -18,10 +18,10 @@ class TinderViewModel(
 ) : ViewModel() {
 
     val userIntent = Channel<TinderIntent>(Channel.UNLIMITED)
-    val state: StateFlow<TinderState>
-        get() = _state
 
     private val _state = MutableStateFlow<TinderState>(TinderState.Idle)
+    val state: StateFlow<TinderState> = _state
+
     private val characters = ArrayDeque<CharacterModel>()
 
     init {
@@ -60,17 +60,15 @@ class TinderViewModel(
         sendSuccess()
     }
 
-    private fun fetchData() {
+    private suspend fun fetchData() {
         _state.value = TinderState.Loading
 
-        viewModelScope.launch {
-            when (val resultOf = getCharactersUseCase(Unit)) {
-                is ResultOf.Success -> {
-                    processSuccess(resultOf.value)
-                }
-                is ResultOf.Failure -> {
-                    processFailure(resultOf.throwable)
-                }
+        when (val resultOf = getCharactersUseCase(Unit)) {
+            is ResultOf.Success -> {
+                processSuccess(resultOf.value)
+            }
+            is ResultOf.Failure -> {
+                processFailure(resultOf.throwable)
             }
         }
     }

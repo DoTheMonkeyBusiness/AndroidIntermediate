@@ -10,7 +10,7 @@ class CharactersRepositoryImpl(
 ) : CharactersRepository {
 
     override suspend fun getCharacters(): List<CharacterModel> {
-        val charactersResponse = service.characters()
+        val charactersResponse = service.characters()?.results
             ?: throw IllegalArgumentException("Empty response")
 
         return CharactersMapper().map(charactersResponse)

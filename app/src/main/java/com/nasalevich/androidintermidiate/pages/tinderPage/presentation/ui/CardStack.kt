@@ -51,7 +51,7 @@ fun CardStack(
             .rawDragGestureFilter(
                 dragObserver = TinderDragObserver(
                     animationController = animationController,
-                    velocityToConfirm = 5000.0
+                    offsetToConfirm = screenWidthPx * 0.3
                 )
             ),
         contentAlignment = Alignment.Center,
@@ -98,9 +98,11 @@ private fun Modifier.moveTo(
     }
 })
 
+private const val VELOCITY_TO_CONFIRM = 5000.0
+
 private class TinderDragObserver(
     private val animationController: AnimationController,
-    private val velocityToConfirm: Double,
+    private val offsetToConfirm: Double,
 ) : DragObserver {
     override fun onDrag(dragDistance: Offset): Offset {
         if (animationController.isAnimationRunning) return super.onDrag(dragDistance)
@@ -114,10 +116,21 @@ private class TinderDragObserver(
     override fun onStop(velocity: Offset) {
         super.onStop(velocity)
 
-        val offset = velocity.x
+        val offset = animationController.offsetX.value
 
         when {
-            offset.absoluteValue < this.velocityToConfirm -> animationController.returnCenter()
+            isCanSwipeUsingVelocity(velocity.x, offset)
+                    || offset.absoluteValue > offsetToConfirm -> doSwipe(offset)
+            else -> animationController.returnCenter()
+        }
+    }
+
+    private fun isCanSwipeUsingVelocity(velocity: Float, offset: Float): Boolean {
+        return velocity.absoluteValue > VELOCITY_TO_CONFIRM && (velocity > 0) == (offset > 0)
+    }
+
+    private fun doSwipe(offset: Float) {
+        when {
             offset > 0 -> animationController.swipeRight()
             else -> animationController.swipeLeft()
         }
